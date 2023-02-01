@@ -12,7 +12,7 @@ def knapsack(items, maxWeight):
 
     for i in range(n):
         if maxWeight == 0:
-            return totalValue
+            return int(totalValue)
         if items[i][0] <= maxWeight:
             totalValue += items[i][1]
             maxWeight -= items[i][0]
@@ -21,7 +21,7 @@ def knapsack(items, maxWeight):
             totalValue += items[i][1] * fraction
             maxWeight = 0
 
-    return totalValue
+    return int(totalValue)
 
 input = input("Enter the filename: ")
 filename = "Datasets/" + input
