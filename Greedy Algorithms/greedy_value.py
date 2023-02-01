@@ -23,6 +23,10 @@ def knapsack(items, maxWeight):
 
     return totalValue
 
-items = [(2,3),(3,4),(4,5),(5,8),(9,10)]
-maxWeight = 20
-print(knapsack(items, maxWeight))
+input = input("Enter the filename: ")
+filename = "Datasets/" + input
+org_data = read_file(filename)
+maxWeight = org_data[0][1]
+del org_data[0]
+data = [[sublist[1], sublist[2]] for sublist in org_data]
+print("Largest value: " + str(knapsack(data, maxWeight)))
