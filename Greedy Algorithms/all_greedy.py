@@ -65,6 +65,6 @@ org_data = read_file(filename)
 maxWeight = org_data[0][1] # gets max weight from the file
 del org_data[0] # gets rid of first index in array containing number of lines and max weight
 data = [[sublist[1], sublist[2]] for sublist in org_data] # creates new array containing weight and value
-print("Largest value for greedy algorithm sorting by weight: " + str(greedy_weight(data, maxWeight)))
-print("Largest value for greedy algorithm sorting by value: " + str(greedy_value(data, maxWeight)))
-print("Largest value for greedy algorithm sorting by value:weight ratio: " + str(greedy_ratio(data, maxWeight)))
+print("Largest value for greedy algorithm sorting by weight = " + str(greedy_weight(data, maxWeight)))
+print("Largest value for greedy algorithm sorting by value = " + str(greedy_value(data, maxWeight)))
+print("Largest value for greedy algorithm sorting by value:weight ratio = " + str(greedy_ratio(data, maxWeight)))
