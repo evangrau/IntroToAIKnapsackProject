@@ -1,70 +1,138 @@
-# function to get the information from the .kp file
-def read_file(filename):
-    data = []
-    with open(filename) as f:
-        for line in f:
-            data.append(list(map(int, line.strip().split(','))))
-    return data
+class Item:
+    num = 0
+    weight = 0
+    value = 0
+
+input = input("Enter the filename: ")               #prompt user
+filename = "Datasets/" + input                      #create filename
+count = -1
+data = []
+with open(filename) as f:                           #read file
+    for line in f:
+        if(count == -1):                         #first line
+            firstLine = line.split(",")
+            numItems = int(firstLine[0])
+            maxWeight = int(firstLine[1])
+            for i in range(0,numItems):
+                data.append(Item())
+        else:                                      #read into data array
+            currLine = line.split(",")
+            data[count].num = int(currLine[0])
+            data[count].weight = int(currLine[1])
+            data[count].value = int(currLine[2])
+        count+=1
+
+print("All values in data:\n")   #TEMPPPPPPPPPPPPPPPPPPPPPPPPP TESTING
+for i in range(0, len(data)):
+    print(data[i].num, ", ", data[i].weight, ", ", data[i].value, "\n")
 
 # greedy algorithm that sorts the items by weight
-def greedy_weight(items, maxWeight):
-    items.sort(key=lambda x: x[0])
-    n = len(items)
-    totalValue = 0
+# insertion sort data by weight
 
-    for i in range(n):
-        if maxWeight == 0:
-            return int(totalValue)
-        a = min(items[i][0], maxWeight)
-        totalValue += a * (items[i][1] / items[i][0])
-        maxWeight -= a
+for i in range(1, len(data)):    #set item to be fixed
+    fix = data[i].weight
+    fixNum = data[i].num
+    fixVal = data[i].value
+    fixInd = i
 
-    return int(totalValue)
+    j = i-1
+    while j >= 0 and data[j].weight > fix:   #finding correct position for fix
+        data[j+1].weight = data[j].weight
+        data[j+1].num = data[j].num
+        data[j+1].value = data[j].value
 
-# greedy algorithm that sorts the items by weight
-def greedy_value(items, maxWeight):
-    items.sort(key=lambda x: x[1], reverse=True)
-    n = len(items)
-    totalValue = 0
+        j-=1
+    data[j+1].weight = fix     #swapping values
+    data[j+1].num = fixNum
+    data[j+1].value = fixVal
 
-    for i in range(n):
-        if maxWeight == 0:
-            return int(totalValue)
-        if items[i][0] <= maxWeight:
-            totalValue += items[i][1]
-            maxWeight -= items[i][0]
-        else:
-            fraction = maxWeight / items[i][0]
-            totalValue += items[i][1] * fraction
-            maxWeight = 0
+print("All values in data sorted by weight:\n")      #TEMPPPPPPPPPPPPPPPPPPPPPPPPP TESTING
+for i in range(0, len(data)):
+    print(data[i].num, ", ", data[i].weight, ", ", data[i].value, "\n")
 
-    return int(totalValue)
+#select values
+maxWeightTemp = maxWeight
+currValue = 0
+for i in range(0, len(data)):
+    if(maxWeightTemp - data[i].weight >= 0):
+        currValue += data[i].value
+        maxWeightTemp -= data[i].weight
+    else:
+        exit
 
-# greedy algorithm that sorts the items by the value:weight ratio
-def greedy_ratio(items, maxWeight):
-    items.sort(key=lambda x: x[1] / x[0], reverse=True)
-    n = len(items)
-    totalValue = 0
+# Greedy Algorithm by weight results
+print("Greedy algorithm by weight max value: ", currValue, "\n")
 
-    for i in range(n):
-        if maxWeight == 0:
-            return int(totalValue)
-        if items[i][0] <= maxWeight:
-            totalValue += items[i][1]
-            maxWeight -= items[i][0]
-        else:
-            fraction = maxWeight / items[i][0]
-            totalValue += items[i][1] * fraction
-            maxWeight = 0
+# greedy algorithm that sorts the items by value
+# insertion sort data by value
 
-    return int(totalValue)
+for i in range(1, len(data)):    #set item to be fixed
+    fix = data[i].value
+    fixNum = data[i].num
+    fixWeight = data[i].weight
+    fixInd = i
 
-input = input("Enter the filename: ") # gets the filename from the user
-filename = "Datasets/" + input
-org_data = read_file(filename)
-maxWeight = org_data[0][1] # gets max weight from the file
-del org_data[0] # gets rid of first index in array containing number of lines and max weight
-data = [[sublist[1], sublist[2]] for sublist in org_data] # creates new array containing weight and value
-print("sorting by weight = " + str(greedy_weight(data, maxWeight)))
-print("sorting by value = " + str(greedy_value(data, maxWeight)))
-print("sorting by value:weight ratio = " + str(greedy_ratio(data, maxWeight)))
+    j = i-1
+    while j >= 0 and data[j].value > fix:   #finding correct position for fix
+        data[j+1].weight = data[j].weight
+        data[j+1].num = data[j].num
+        data[j+1].value = data[j].value
+
+        j-=1
+    data[j+1].weight = fixWeight     #swapping values
+    data[j+1].num = fixNum
+    data[j+1].value = fix
+
+print("All values in data sorted by value:\n")      #TEMPPPPPPPPPPPPPPPPPPPPPPPPP TESTING
+for i in range(0, len(data)):
+    print(data[i].num, ", ", data[i].weight, ", ", data[i].value, "\n")
+
+#select values
+maxWeightTemp = maxWeight
+currValue = 0
+for i in range(0, len(data)):
+    if(maxWeightTemp - data[i].weight >= 0):
+        currValue += data[i].value
+        maxWeightTemp -= data[i].weight
+
+# Greedy Algorithm by value results
+print("Greedy algorithm by value max value: ", currValue, "\n")
+
+
+# greedy algorithm that sorts the items by value:weight ratio
+# insertion sort data by ration
+
+for i in range(1, len(data)):    #set item to be fixed
+    fix = data[i].value / data[i].weight
+    fixNum = data[i].num
+    fixWeight = data[i].weight
+    fixVal = data[i].value
+    fixInd = i
+
+    j = i-1
+    while j >= 0 and data[j].value / data[j].weight < fix:   #finding correct position for fix
+        data[j+1].weight = data[j].weight
+        data[j+1].num = data[j].num
+        data[j+1].value = data[j].value
+
+        j-=1
+
+    data[j+1].weight = fixWeight     #swapping values
+    data[j+1].num = fixNum
+    data[j+1].value = fixVal
+
+print("All values in data sorted by value:weight ratio:\n")      #TEMPPPPPPPPPPPPPPPPPPPPPPPPP TESTING
+for i in range(0, len(data)):
+    print(data[i].num, ", ", data[i].weight, ", ", data[i].value, "\n")
+
+#select values
+maxWeightTemp = maxWeight
+currValue = 0
+for i in range(0, len(data)):
+    if(maxWeightTemp - data[i].weight >= 0):
+        currValue += data[i].value
+        maxWeightTemp -= data[i].weight
+
+
+# Greedy Algorithm by ratio results
+print("Greedy algorithm by value:weight ratio max value: ", currValue, "\n")
