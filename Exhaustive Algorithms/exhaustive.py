@@ -14,16 +14,18 @@ del org_data[0] # gets rid of first index in array containing number of lines an
 weights = [sublist[1] for sublist in org_data] # gets all of the weights and puts them into an array
 values = [sublist[2] for sublist in org_data] # gets all of the values and puts them into an array to complement the weights
 
-def knapSack(max_w, w, val, n):
+# basic exhaustive knapsack algorithm
+def knapsack(max_w, w, val, n):
    # initial conditions
+   # if num of items is 0 or max weight is 0 then the max has to be 0
    if n == 0 or max_w == 0:
       return 0
    # if weight is higher than capacity then it is not included
    if (w[n-1] > max_w):
-      return knapSack(max_w, w, val, n-1)
+      return knapsack(max_w, w, val, n-1)
    # return either nth item being included or not
    else:
-      return max(val[n-1] + knapSack(max_w-w[n-1], w, val, n-1),
-         knapSack(max_w, w, val, n-1))
+      return max(val[n-1] + knapsack(max_w-w[n-1], w, val, n-1),
+         knapsack(max_w, w, val, n-1))
 
-print("Max value: " + str(knapSack(max_weight, weights, values, num_items)))
+print("Max value: " + str(knapsack(max_weight, weights, values, num_items)))
