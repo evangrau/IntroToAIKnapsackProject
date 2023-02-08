@@ -27,7 +27,7 @@ def knapsack(max_w, w, val, n):
    if n == 0 or max_w == 0:
       return 0
    # if weight is higher than capacity then it is not included
-   if (w[n-1] > max_w):
+   if w[n-1] > max_w:
       return knapsack(max_w, w, val, n-1)
    # return either nth item being included or not
    else:

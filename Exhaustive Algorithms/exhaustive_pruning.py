@@ -32,7 +32,7 @@ def knapsack(max_w, w, val, n, memo):
    if memo[n][max_w] != -1:
       return memo[n][max_w]
    # if weight is higher than capacity then it is not included
-   if (w[n-1] > max_w):
+   if w[n-1] > max_w:
       memo[n][max_w] = knapsack(max_w, w, val, n-1, memo)
    # set current value of memo to either nth item being included or not
    else:
