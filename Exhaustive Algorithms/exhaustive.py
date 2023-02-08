@@ -3,16 +3,22 @@ def read_file(filename):
    data = []
    with open(filename) as f:
       for line in f:
-         data.append(list(map(int, line.strip().split(','))))
+         data.append(list(map(str, line.strip().split(',')))) # implementation to accept strings for the label
    return data
 
 filename = "Datasets/test1.kp"
 org_data = read_file(filename)
-max_weight = org_data[0][1] # gets max weight from the file
-num_items = org_data[0][0] # gets number of items from the file
+
+max_weight = int(org_data[0][1]) # gets max weight from the file
+num_items = int(org_data[0][0]) # gets number of items from the file
 del org_data[0] # gets rid of first index in array containing number of lines and max weight
-weights = [sublist[1] for sublist in org_data] # gets all of the weights and puts them into an array
-values = [sublist[2] for sublist in org_data] # gets all of the values and puts them into an array to complement the weights
+
+# gets all of the weights and puts them into an array and does the same with complementing values
+weights = [sublist[1] for sublist in org_data]
+values = [sublist[2] for sublist in org_data]
+# converts the arrays into int arrays
+weights = [int(i) for i in weights]
+values = [int(i) for i in values]
 
 # basic exhaustive knapsack algorithm
 def knapsack(max_w, w, val, n):
