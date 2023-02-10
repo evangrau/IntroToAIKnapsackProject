@@ -1,3 +1,7 @@
+import time
+
+start_time = time.time()
+
 # function to get the information from the .kp file
 def read_file(filename):
    data = []
@@ -6,7 +10,7 @@ def read_file(filename):
          data.append(list(map(str, line.strip().split(',')))) # implementation to accept strings for the label
    return data
 
-filename = "Datasets/test8.kp"
+filename = "Datasets/n06.kp"
 org_data = read_file(filename)
 
 max_weight = int(org_data[0][1]) # gets max weight from the file
@@ -42,3 +46,7 @@ def knapsack(max_w, w, val, n, memo):
    return memo[n][max_w]
 
 print("Max value: " + str(knapsack(max_weight, weights, values, num_items, memo)))
+
+end_time = time.time()
+time_elapsed = (end_time - start_time) * 1000
+print("Time elapsed: {:.4f} milliseconds".format(time_elapsed))
