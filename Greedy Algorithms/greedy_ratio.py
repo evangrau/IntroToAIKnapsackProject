@@ -1,12 +1,35 @@
+import time
+
+start_time = time.time()
+
 def read_file(filename):
     data = []
     with open(filename) as f:
         for line in f:
-            data.append(list(map(int, line.strip().split(','))))
+            data.append(list(map(str, line.strip().split(','))))
     return data
 
+def insertion_sort(items):
+    for i in range(1, len(items)):
+        key = items[i]
+        j = i - 1
+        while j >= 0 and items[j][1]/items[j][0] < key[1]/key[0]:
+            items[j + 1] = items[j]
+            j -= 1
+        items[j + 1] = key
+    return items
+
+def insertion_sort(items):
+    for i in range(1, len(items)):
+        key = items[i]
+        j = i - 1
+        while j >= 0 and items[j][1] < key[1]:
+            items[j + 1] = items[j]
+            j -= 1
+        items[j + 1] = key
+    return items
+
 def knapsack(items, maxWeight):
-    items.sort(key=lambda x: x[1] / x[0], reverse=True)
     n = len(items)
     totalValue = 0
 
@@ -23,10 +46,14 @@ def knapsack(items, maxWeight):
 
     return int(totalValue)
 
-input = input("Enter the filename: ")
-filename = "Datasets/" + input
+filename = "Datasets/test1.kp"
 org_data = read_file(filename)
-maxWeight = org_data[0][1]
+maxWeight = int(org_data[0][1])
 del org_data[0]
-data = [[sublist[1], sublist[2]] for sublist in org_data]
-print("Largest value: " + str(knapsack(data, maxWeight)))
+data = [[int(sublist[1]), int(sublist[2])] for sublist in org_data]
+data = insertion_sort(data)
+print("Max value: " + str(knapsack(data, maxWeight)))
+
+end_time = time.time()
+time_elapsed = (end_time - start_time) * 1000
+print("Time elapsed: {:.4f} milliseconds".format(time_elapsed))
