@@ -10,7 +10,7 @@ def read_file(filename):
          data.append(list(map(str, line.strip().split(',')))) # implementation to accept strings for the label
    return data
 
-filename = "knapsack_testcases-final/test400.kp"
+filename = "knapsack_testcases-final/test1.kp"
 org_data = read_file(filename)
 
 max_weight = int(org_data[0][1]) # gets max weight from the file
@@ -29,16 +29,32 @@ def knapsack(max_w, w, val, n):
    # initial conditions
    # if num of items is 0 or max weight is 0 then the max has to be 0
    if n == 0 or max_w == 0:
-      return 0
+      return 0, 0, 0
    # if weight is higher than capacity then it is not included
    if w[n-1] > max_w:
-      return knapsack(max_w, w, val, n-1)
-   # return either nth item being included or not
-   else:
-      return max(val[n-1] + knapsack(max_w-w[n-1], w, val, n-1),
-         knapsack(max_w, w, val, n-1))
+      return knapsack(max_w, w, val, n-1)  
 
-print("Max value: " + str(knapsack(max_weight, weights, values, num_items)))
+   # tries set with an item 
+   with_item_val, with_item_weight, with_item_num_items = knapsack(max_w-w[n-1], w, val, n-1)
+   with_item_val += val[n-1]
+   with_item_weight += w[n-1]
+   with_item_num_items += 1
+    
+   # tries set without an item 
+   without_item_val, without_item_weight, without_item_num_items = knapsack(max_w, w, val, n-1)
+    
+   # returns value based on which is higher 
+   if with_item_val > without_item_val:
+      return with_item_val, with_item_weight, with_item_num_items
+   else:
+      return without_item_val, without_item_weight, without_item_num_items
+
+
+v, w, i = knapsack(max_weight, weights, values, num_items)
+
+print("Max value:", v)
+print("Weight:", w)
+print("Number of items:", i)
 
 end_time = time.time()
 time_elapsed = (end_time - start_time) * 1000
