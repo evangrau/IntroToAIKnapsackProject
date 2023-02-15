@@ -10,7 +10,7 @@ def read_file(filename):
          data.append(list(map(str, line.strip().split(',')))) # implementation to accept strings for the label
    return data
 
-filename = "knapsack_testcases-final/test5.kp"
+filename = "Datasets/knapsack_testcases-final/test5.kp"
 org_data = read_file(filename)
 
 max_weight = int(org_data[0][1]) # gets max weight from the file

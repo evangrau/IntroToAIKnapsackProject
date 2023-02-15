@@ -13,33 +13,42 @@ def insertion_sort(items):
     for i in range(1, len(items)):
         key = items[i]
         j = i - 1
-        while j >= 0 and items[j][0] > key[0]:
+        while j >= 0 and items[j][1] < key[1]:
             items[j + 1] = items[j]
             j -= 1
         items[j + 1] = key
     return items
 
-def knapsack(items, maxWeight):
+def knapsack(items, max_weight):
     n = len(items)
-    totalValue = 0
+    total_value = 0
+    total_weight = 0
+    num_items = 0
 
     for i in range(n):
-        if maxWeight == 0:
-            return int(totalValue)
-        a = min(items[i][0], maxWeight)
-        totalValue += a * (items[i][1] / items[i][0])
-        maxWeight -= a
+        if max_weight == 0:
+            break
+        if items[i][0] <= max_weight:
+            total_value += items[i][1]
+            total_weight += items[i][0]
+            max_weight -= items[i][0]
+            num_items += 1
 
-    return int(totalValue)
+    return total_value, total_weight, num_items
 
-filename = "Datasets/test1.kp"
+filename = "Datasets/knapsack_testcases-final/test5.kp"
 org_data = read_file(filename)
-maxWeight = int(org_data[0][1])
+max_weight = int(org_data[0][1])
 del org_data[0]
 data = [[int(sublist[1]), int(sublist[2])] for sublist in org_data]
 data = insertion_sort(data)
-print("Max value: " + str(knapsack(data, maxWeight)))
+
+v, w, i = knapsack(data, max_weight)
+
+print("Max value:", v)
+print("Weight:", w)
+print("Number of items:", i)
 
 end_time = time.time()
 time_elapsed = (end_time - start_time) * 1000
-print("Time elapsed: {:.4f} milliseconds".format(time_elapsed))
+print("Time elapsed: {:.0f} milliseconds".format(time_elapsed))
