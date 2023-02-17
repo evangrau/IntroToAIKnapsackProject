@@ -1,0 +1,151 @@
+Test Case,Approach,,Runtime,Value,Weight,# of Items
+test1.kp,Greedy Weight,,0 ms,123,50,7
+,Greedy Value,,0 ms,95,44,5
+,Greedy Value:Weight,,0 ms,134,48,9
+,Exhaustive,,177 ms,136,50,9
+,Simple Pruning,,8 ms,136,50,9
+,Optimization,,17 ms,136,50,9
+test2.kp,Greedy Weight,,7 ms,92,50,6
+,Greedy Value,,1 ms,92,50,6
+,Greedy Value:Weight,,1 ms,104,47,8
+,Exhaustive,,123 ms,106,49,8
+,Simple Pruning,,10 ms,106,49,8
+,Optimization,,17 ms,106,49,8
+test3.kp,Greedy Weight,,7 ms,110,70,6
+,Greedy Value,,0 ms,94,66,5
+,Greedy Value:Weight,,1 ms,127,70,9
+,Exhaustive,,327 ms,127,70,9
+,Simple Pruning,,6 ms,127,70,9
+,Optimization,,25 ms,127,70,9
+test4.kp,Greedy Weight,,0 ms,67,48,3
+,Greedy Value,,0 ms,67,48,3
+,Greedy Value:Weight,,0 ms,66,48,5
+,Exhaustive,,10 ms,67,48,3
+,Simple Pruning,,4 ms,67,48,3
+,Optimization,,26 ms,67,48,3
+test5.kp,Greedy Weight,,0 ms,7,5,1
+,Greedy Value,,1 ms,7,5,1
+,Greedy Value:Weight,,1 ms,7,5,1
+,Exhaustive,,0 ms,8,6,2
+,Simple Pruning,,1 ms,8,6,2
+,Optimization,,10 ms,8,6,2
+test6.kp,Greedy Weight,,7 ms,37,10,2
+,Greedy Value,,0 ms,20,5,1
+,Greedy Value:Weight,,0 ms,37,10,2
+,Exhaustive,,5 ms,37,10,2
+,Simple Pruning,,10 ms,37,10,2
+,Optimization,,8 ms,37,10,2
+test7.kp,Greedy Weight,,9 ms,92,50,5
+,Greedy Value,,0 ms,76,41,4
+,Greedy Value:Weight,,1 ms,112,49,8
+,Exhaustive,,32 ms,113,50,8
+,Simple Pruning,,8 ms,113,50,8
+,Optimization,,16 ms,113,50,8
+test8.kp,Greedy Weight,,6 ms,87,91,4
+,Greedy Value,,2 ms,87,91,4
+,Greedy Value:Weight,,1 ms,102,99,6
+,Exhaustive,,14 ms,106,100,6
+,Simple Pruning,,10 ms,106,100,6
+,Optimization,,2 ms,106,100,6
+test9.kp,Greedy Weight,,7 ms,182,137,9
+,Greedy Value,,1 ms,182,137,9
+,Greedy Value:Weight,,1 ms,271,140,18
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,10 ms,271,140,18
+,Optimization,,13 ms,271,140,18
+test10.kp,Greedy Weight,,20 ms,67,14,2
+,Greedy Value,,1 ms,35,5,1
+,Greedy Value:Weight,,0 ms,166,14,6
+,Exhaustive,,70 ms,172,15,7
+,Simple Pruning,,5 ms,172,15,7
+,Optimization,,16 ms,172,15,7
+test11.kp,Greedy Weight,,7 ms,139,25,4
+,Greedy Value,,1 ms,140,25,4
+,Greedy Value:Weight,,1 ms,273,25,11
+,Exhaustive,,126785 ms,273,25,10
+,Simple Pruning,,12 ms,273,25,10
+,Optimization,,33 ms,273,25,10
+test12.kp,Greedy Weight,,7 ms,726,99,9
+,Greedy Value,,0 ms,530,86,6
+,Greedy Value:Weight,,0 ms,766,93,11
+,Exhaustive,,86 ms,771,100,10
+,Simple Pruning,,8 ms,771,100,10
+,Optimization,,10 ms,771,100,10
+test13.kp,Greedy Weight,,8 ms,1672,250,73
+,Greedy Value,,1 ms,1656,247,72
+,Greedy Value:Weight,,1 ms,1722,248,79
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,20 ms,1728,250,79
+,Optimization,,24 ms,1728,250,79
+test14.kp,Greedy Weight,,6 ms,2005,339,100
+,Greedy Value,,1 ms,2005,339,100
+,Greedy Value:Weight,,3 ms,2005,339,100
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,26 ms,2005,339,100
+,Optimization,,42 ms,2005,339,100
+test20.kp,Greedy Weight,,7 ms,219,49,7
+,Greedy Value,,2 ms,194,45,6
+,Greedy Value:Weight,,0 ms,259,49,10
+,Exhaustive,,65 ms,260,50,10
+,Simple Pruning,,9 ms,260,50,10
+,Optimization,,9 ms,260,50,10
+test21.kp,Greedy Weight,,7 ms,121,140,5
+,Greedy Value,,1 ms,101,121,4
+,Greedy Value:Weight,,1 ms,121,140,5
+,Exhaustive,,39 ms,122,150,6
+,Simple Pruning,,8 ms,122,150,6
+,Optimization,,17 ms,122,150,6
+test30.kp,Greedy Weight,,8 ms,219,49,7
+,Greedy Value,,2 ms,194,45,6
+,Greedy Value:Weight,,1 ms,264,49,11
+,Exhaustive,,1637 ms,265,50,11
+,Simple Pruning,,5 ms,265,50,11
+,Optimization,,14 ms,265,50,11
+test40.kp,Greedy Weight,,8 ms,262,50,8
+,Greedy Value,,0 ms,262,50,8
+,Greedy Value:Weight,,0 ms,309,49,11
+,Exhaustive,,48536 ms,312,50,12
+,Simple Pruning,,8 ms,312,50,12
+,Optimization,,20 ms,312,50,12
+test50.kp,Greedy Weight,,7 ms,298,50,9
+,Greedy Value,,1 ms,238,43,7
+,Greedy Value:Weight,,1 ms,382,49,13
+,Exhaustive,,807427 ms,382,50,14
+,Simple Pruning,,8 ms,382,50,14
+,Optimization,,12 ms,382,50,14
+test60.kp,Greedy Weight,,6 ms,334,50,10
+,Greedy Value,,2 ms,274,44,8
+,Greedy Value:Weight,,1 ms,405,50,15
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,22 ms,405,50,14
+,Optimization,,26 ms,405,50,14
+test75.kp,Greedy Weight,,7 ms,334,50,10
+,Greedy Value,,0 ms,274,44,8
+,Greedy Value:Weight,,1 ms,438,50,15
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,15 ms,438,50,15
+,Optimization,,18 ms,438,50,15
+test90.kp,Greedy Weight,,6 ms,334,50,10
+,Greedy Value,,1 ms,274,44,8
+,Greedy Value:Weight,,1 ms,446,50,16
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,5 ms,446,50,16
+,Optimization,,23 ms,446,50,16
+test100.kp,Greedy Weight,,8 ms,288,199,15
+,Greedy Value,,1 ms,270,190,14
+,Greedy Value:Weight,,2 ms,379,200,24
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,33 ms,380,200,22
+,Optimization,,25 ms,380,200,22
+test200.kp,Greedy Weight,,10 ms,353,198,18
+,Greedy Value,,2 ms,372,200,19
+,Greedy Value:Weight,,2 ms,528,197,30
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,46 ms,533,200,30
+,Optimization,,42 ms,533,200,30
+test400.kp,Greedy Weight,,11 ms,320,199,16
+,Greedy Value,,5 ms,340,197,17
+,Greedy Value:Weight,,8 ms,599,200,34
+,Exhaustive,,20+ min,n/a,n/a,n/a
+,Simple Pruning,,130 ms,599,200,34
+,Optimization,,71 ms,599,200,34

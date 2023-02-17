@@ -39,7 +39,7 @@ def knapsack(items, max_weight):
     return total_value, total_weight, num_items
 
 
-filename = "Datasets/knapsack_testcases-final/test4.kp"
+filename = "Datasets/knapsack_testcases-final/test400.kp"
 org_data = read_file(filename)
 max_weight = int(org_data[0][1])
 del org_data[0]
