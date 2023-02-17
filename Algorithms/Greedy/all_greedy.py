@@ -65,7 +65,7 @@ for i in range(1, len(data)):    #set item to be fixed
     fixInd = i
 
     j = i-1
-    while j >= 0 and data[j].value > fix:   #finding correct position for fix
+    while j >= 0 and data[j].value < fix:   #finding correct position for fix
         data[j+1].weight = data[j].weight
         data[j+1].num = data[j].num
         data[j+1].value = data[j].value
