@@ -2,6 +2,7 @@ import time
 
 start_time = time.time()
 
+# function to get the information from the .kp file
 def read_file(filename):
     data = []
     with open(filename) as f:
@@ -9,6 +10,7 @@ def read_file(filename):
             data.append(list(map(str, line.strip().split(','))))
     return data
 
+# insertion sort function to sort items by value:weight ratio
 def insertion_sort(items):
     for i in range(1, len(items)):
         key = items[i]

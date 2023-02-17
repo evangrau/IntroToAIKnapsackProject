@@ -10,7 +10,7 @@ def read_file(filename):
          data.append(list(map(str, line.strip().split(',')))) # implementation to accept strings for the label
    return data
 
-filename = "Datasets/knapsack_testcases-final/test5.kp"
+filename = "Datasets/knapsack_testcases-final/test400.kp"
 org_data = read_file(filename)
 
 max_weight = int(org_data[0][1]) # gets max weight from the file
@@ -65,4 +65,4 @@ print("Number of items:", i)
 
 end_time = time.time()
 time_elapsed = (end_time - start_time) * 1000
-print("Time elapsed: {:.4f} milliseconds".format(time_elapsed))
+print("Time elapsed: {:.0f} milliseconds".format(time_elapsed))
